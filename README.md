@@ -2,6 +2,8 @@
 
 RequireJS已经流行一阵子了，这里写一个小DEMO，有助于更加熟悉JS依赖，原生JS和JS库的模块化。
 
+Demo地址：https://songxtianx.github.io/requirejs-demo
+
 它提供了以下功能：
 - 声明不同js文件之间的依赖
 - 可以按需、并行、延时载入js库
@@ -13,7 +15,15 @@ RequireJS是一款遵循AMD规范协议的JavaScript模块加载器，
 
 AMD 规范在这里：https://github.com/amdjs/amdjs-api/wiki/AMD
 
-__注：在本地测试性能的时候发现刷新十次左右就有一次jQuery加载不出来...
+__注：开始的时候在本地测试性能的时候发现刷新十次左右就有一次jQuery加载不出来... 后来发现要设置shim的deps
+<pre><code>
+    shim: {
+      'jquery.bootstrap':{
+        //jquery的依存设定，如果不指定此项，本地页面大概有十分之一的几率会出现jQuery未加载的报错。
+        deps:['jquery']
+      }
+    }
+</code></pre>
 
 
 
@@ -21,7 +31,7 @@ __注：在本地测试性能的时候发现刷新十次左右就有一次jQuery
 
 
 # 技术栈
-RequireJS 2.2.0 + jQuery 1.11.3 + Bootstrap 3.3.7
+RequireJS 2.3.3 + jQuery 1.11.3 + Bootstrap 3.3.7
 
 
 
@@ -32,7 +42,7 @@ RequireJS 2.2.0 + jQuery 1.11.3 + Bootstrap 3.3.7
 
 ## 无主的与有主的模块
 
-我遇到了一个折腾我不少时间的问题：为什么我只能使用 jquery 来依赖jquery, 而不能用其它的名字？
+我遇到了一个折腾我不少时间的问题：为什么我只能使用 jquery 来依赖jquery, 而不能用其它的名字？[参考](http://www.tuicool.com/articles/jam2Anv)
 
 比如下面这段代码：
 <pre><code>
@@ -65,7 +75,7 @@ requirejs(['jquery'], function(jq) {
 就一切正常了，能打印出 jq 相应的对象了。
 
 为什么？我始终没搞清楚问题在哪儿。
-参考地址：http://www.tuicool.com/articles/jam2Anv
+
 
 ##有主的模块
 
@@ -101,7 +111,7 @@ requirejs(['jquery'], function(jq) {
 
 
 
-
+[Demo地址](https://songxtianx.github.io/requirejs-demo)：https://songxtianx.github.io/requirejs-demo
 
 
 
